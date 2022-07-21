@@ -1,0 +1,321 @@
+/* purgando defaults de margins y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* color pastel de fondo y tipografia san-serif, Lato */
+body{
+    background: #ddeefc;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Definiendo distribución del contenido de la card; width, flex, center, padding */
+.contenedor{
+    width: 90%;
+    max-width: 1000px;
+    padding: 100px 20px;
+    margin: auto ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ----------------- Estilos globales de la tarjeta ----------------- */
+.tarjeta{
+    width: 100%;
+    max-width: 550px;
+    position: relative;
+    color: #fff;
+    transition: .3s ease all;
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    user-select: none;
+    cursor: pointer;
+    z-index: 2;
+}
+
+
+/* animation, rotation 180deg */
+.tarjeta.active{
+    transform: rotateY(180deg) ;
+}
+
+.tarjeta > div { 
+    padding: 30px;
+    border-radius: 15px;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 5px rgba(48, 60, 74, 0.6) ;
+}
+
+/* --------------- Tarjeta Delantera --------------- */
+
+/* Estilo de fondo de la tarjeta */
+.tarjeta .delantera {
+    width: 100%;
+    background: url(/assets/img/bg-tarjeta/bg-tarjeta-02.jpg);
+    background-size: cover;
+    backface-visibility: hidden;
+}
+
+/* posicion de la marca en la parte superior de la tarjeta */
+.delantera .logo-marca {
+    text-align: right;
+    min-height: 50px;
+}
+
+/* dandole el tamaño al logo de la tarjeta que cambia dinámicamente */
+.delantera .logo-marca img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: 8rem;
+}
+
+/* estilo y tamaño del chip */
+.delantera .chip {
+    position: absolute;
+    bottom:10rem;
+    width: 100%;
+    max-width: 50px;
+    margin: 20px 0 20px 5px;
+}
+
+/* dandole estilo a los labels */
+.delantera .grupo .label { 
+    font-size: 1.08rem;
+    color: #acacac;
+    margin-bottom: .5rem
+}
+
+/* dandole estilo a los datos del usuario */
+.delantera .grupo .numero,
+.delantera .grupo .nombre,
+.delantera .grupo .expiracion {
+    color: #FFF;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* espaciando el contenido de la tarjeta a sus magenes (left/right) */
+.delantera .flexbox {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.3rem;
+}
+
+/* ----------------- Tarjeta Trasera ----------------- */
+
+.trasera {
+    height: 345px;
+    background: url(/assets/img/bg-tarjeta/bg-tarjeta-02.jpg);
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+/* banda magnetica */
+.trasera .barra-magnetica {
+    height: 3.7rem;
+    background: rgba(0, 0, 0, 0.854);
+    width: 100%;
+    position: absolute;
+    top: 2.5rem;
+    left: 0;
+}
+
+/* posicionando fuera de barra magnetica */
+.trasera .datos { 
+    margin: 5rem 0 0 0; 
+    display: flex;
+    justify-content: space-between;
+}
+
+.trasera .datos p {
+    margin-bottom: 5px;
+}
+
+.trasera .datos #firma {
+    width: 70%;
+}
+
+.trasera .datos #firma .firma {
+    height: 3rem;
+    background: repeating-linear-gradient(skyblue 0, skyblue 5px, orange 5px, orange 10px);
+}
+
+.trasera .datos #firma .firma p {
+    line-height: 3rem;
+    font-family: 'Lato', cursive;
+    color: #000;
+    font-size: 2.6rem;
+    padding: 0 .7rem;
+    text-transform: capitalize;
+}
+
+/* recuadro CVV */
+.trasera .datos #ccv {
+    width: 20%;
+}
+
+.trasera .datos .grupo .ccvP {
+    background: #fff;
+    height: 40px;
+    color: #000;
+    padding: 10px;
+    text-align: center;
+    z-index: 3;
+    font-size: 1.2rem;
+}
+
+.trasera .leyenda { 
+    font-size: 1rem;
+    line-height: 22px;
+    text-align: justify;
+}
+
+.trasera .link-banco {
+    font-size: 1rem;
+    color: #FFF;
+    text-decoration: none;
+    text-align: center;
+    position: relative;
+    bottom: 1rem
+}
+
+/* ---------------- Contenedor Boton ----------------*/
+
+.contenedor-btn .btn-abrir-formulario {
+    background: #2364d2;
+    color: #fff;
+    font-size: 1.6rem;
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    bottom: 1.5rem;
+    border:none;
+    border-radius: 100%;
+    box-shadow: -5px 4px 8px rgba(24,56,182,.4);
+    z-index: 10;
+    padding: .2rem;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.contenedor-btn .btn-abrir-formulario:hover {
+    background: #1850b1
+}
+
+.contenedor-btn .btn-abrir-formulario.active {
+    transform: rotate(45deg)
+}
+
+/* -------------------- Formulario Tarjeta -------------------- */
+
+.formulario-tarjeta { 
+    background: #fff;
+    width: 100%;
+    padding: 150px 30px 30px 30px;
+    max-width: 90%;
+    border-radius: 10px;
+    position: relative;
+    bottom: 10rem;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, .13);
+    z-index: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 0.3s ease-out;
+}
+
+.formulario-tarjeta.active{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.formulario-tarjeta label {
+    display: block;
+    color: #7d8994;
+    margin-bottom: 5px;   
+}
+
+.formulario-tarjeta input,
+.formulario-tarjeta select,
+.btn-enviar {
+    border: 2px solid #CED6E0;
+    font-size: 18px;
+    height: 50px;
+    width: 100%;
+    padding: 5px 12px;
+    transition: .3s ease all;
+    border-radius: 5px;
+}
+
+.formulario-tarjeta input:hover,
+.formulario-tarjeta select:hover {
+    border: 2px solid #93BDED;
+}
+
+.formulario-tarjeta input:focus,
+.formulario-tarjeta select:focus {
+    outline: rgba(4,4,4);
+    box-shadow: 1px 7px 10px -5px rgba(90,116,148,0.3);
+}
+
+
+.formulario-tarjeta input {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.formulario-tarjeta .flexbox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.formulario-tarjeta .expira {
+    width: 100%;
+}
+
+.formulario-tarjeta .ccvP {
+    min-width: 100px;
+}
+
+.formulario-tarjeta .grupo-select {
+    width: 100%;
+    margin-right: 1rem;
+    position: relative;
+}
+
+.formulario-tarjeta select {
+    -webkit-appearance: none;
+}
+
+.formulario-tarjeta .grupo-select i {
+    position: absolute;
+    color: #CED6E0;
+    top: 1.07rem;
+    right: .9rem;
+    transition: .3s ease all;
+}
+
+.formulario-tarjeta .grupo-select:hover i {
+    color: #93bfed;
+}
+
+.formulario-tarjeta .btn-enviar {
+    border: none;
+    padding: .6rem;
+    font-size: 1.5rem;
+    color: #fff;
+    background: #2364d2;
+    box-shadow: 2px 2px 10px 0px rgba(0, 85, 212,.4);
+    cursor: pointer;
+}
+
+.formulario-tarjeta .btn-enviar:hover{
+    background: #1850b1;
+}
