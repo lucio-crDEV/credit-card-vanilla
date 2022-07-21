@@ -47,10 +47,8 @@ for( let i = yearActual; i <= yearActual + 8 ; i++){
 }
 
 // Input numero de tarjeta
-
 formulario.inputNumero.addEventListener('keyup', (e)=>{
     let inputValue = e.target.value;
-
     formulario.inputNumero.value = inputValue
         // Eliminando espacios en blanco
         .replace(/\s/g, '')
@@ -63,23 +61,39 @@ formulario.inputNumero.addEventListener('keyup', (e)=>{
 
     numeroTarjeta.textContent = inputValue
 
+    // Devolviendo estado default
     if ( inputValue == '' ) {
         numeroTarjeta.textContent = "#### #### #### ####"
-
         logoMarca.innerHTML = ''
     }
     
-    
-    if ( inputValue[0] == 4 ){
-        logoMarca.innerHTML = ''
-        const imagen = document.createElement('img')
-        imagen.src= '/assets/img/logos/visa.png'
-        logoMarca.appendChild(imagen)
-    } else if( inputValue[0] == 5 ){
-        logoMarca.innerHTML = ''
-        const imagen = document.createElement('img')
-        imagen.src= '/assets/img/logos/mastercard.png'
-        logoMarca.appendChild(imagen)
+    console.log(inputValue[0])
+
+    switch (inputValue[0]) {
+        case "4":
+            logoMarca.innerHTML = ''
+            let imagen = document.createElement('img')
+            imagen.src= '/assets/img/logos/visa.png'
+            logoMarca.appendChild(imagen)
+            break;
+        case "5": 
+            logoMarca.innerHTML = ''
+            let imagen1 = document.createElement('img')
+            imagen1.src= '/assets/img/logos/mastercard.png'
+            logoMarca.appendChild(imagen1)
+            break;
+        case "3":
+            logoMarca.innerHTML = ''
+            let imagen2 = document.createElement('img')
+            imagen2.src= '/assets/img/logos/americanexpress.png'
+            logoMarca.appendChild(imagen2)
+            break;
+        case "6" :
+            logoMarca.innerHTML = ''
+            let imagen3 = document.createElement('img')
+            imagen3.src= '/assets/img/logos/discover.png'
+            logoMarca.appendChild(imagen3)
+            break;
     }
 
     // Voltear la tarjeta para usuario
@@ -99,7 +113,6 @@ formulario.inputNombre.addEventListener('keyup', ( e ) => {
     if ( inputValue == '' ) {
         nombreTarjeta.textContent = "Jhon Doe"
     }
-
 })
 
 // Cargando mes dinamicamente
@@ -115,15 +128,12 @@ formulario.selectYear.addEventListener('change', ( e ) => {
     mostrarFrente()
  })
 
-
 //  CVV
-
 cvvInput.addEventListener('click', () => {
     mostrarFrente()
 })
 
-
-
+// Rellenando codigo de seguridad posterior
 formulario.inputCCV.addEventListener( 'keyup' , () => {
     if( !tarjeta.classList.contains('active') ){
         tarjeta.classList.toggle('active')
