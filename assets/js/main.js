@@ -8,7 +8,7 @@ const nombreTarjeta = document.getElementById('nombre');
 const yearExp       = document.getElementById('year')
 const mesExp        = document.getElementById('mes')
 const cvv           = document.getElementById('codigo')
-const cvvInput           = document.getElementById('ccv')
+const cvvInput      = document.getElementById('ccv')
 
 
 // Volteamos la tarjeta 
